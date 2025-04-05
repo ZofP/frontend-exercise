@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Cat Articles | Article Management System
 
-## Getting Started
+This project implements a simple **Article Management System** where users can view articles, add comments, and vote on comments. It also includes an admin perspective to manage articles.
+The project was made based on the [Frontend Exercise assignment instructions](https://github.com/Applifting/fullstack-exercise/blob/master/assignment.md#frontend-developer-exercise) from Applifting.
 
-First, run the development server:
+## Setup Instructions
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Prerequisites
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Node.js (v16.x or higher)
+- npm (v7.x or higher)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Installation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Clone the repository**:
 
-## Learn More
+   ```bash
+   git clone https://github.com/ZofP/frontend-exercise.git
+   cd frontend-exercise
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. **Install dependencies**:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```bash
+   npm install
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+3. **Set up environment variables**:  
+    For the purposes of this project, there are no secret variables that cannot be included in the repository. It is sufficient to copy the `.env.example` file contents to `.env` file as is:
 
-## Deploy on Vercel
+   ```bash
+   cp .env.example .env
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4. **Run the development server**:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+   ```bash
+   npm run dev
+   ```
+
+   The application will be available at [http://localhost:3000](http://localhost:3000).
+
+## API Documentation
+
+- **REST API**: You can check out the API documentation [here](https://github.com/Applifting/fullstack-exercise/blob/master/api.yml).
+- **WebSocket API**: Check out the WebSocket API [here](#).
+
+## Authentication
+
+- The **Admin** pages (Articles management, New Article Form, and Edit Article Form) are password-protected
+- The admin login process requires a valid username and password (in a production app the credentials would never be shared in a repository - but this is just a testing project):
+
+      username: zofp
+
+      password: Testpassword-8564!
+
+Note: In a production ready app the credentials would never be shared in a repository!
+However, for this project it is okay as it serves only for testing purposes.
