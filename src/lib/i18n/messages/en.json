@@ -2,5 +2,8 @@
   "navbar": {
     "recentArticles": "Recent Articles",
     "about": "About"
+  },
+  "home": {
+    "heading": "Recent Articles"
   }
 }
