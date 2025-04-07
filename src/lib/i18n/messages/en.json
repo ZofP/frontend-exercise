@@ -1,7 +1,8 @@
 {
   "navbar": {
     "recentArticles": "Recent Articles",
-    "about": "About"
+    "about": "About",
+    "login": "Log in"
   },
   "home": {
     "heading": "Recent Articles"

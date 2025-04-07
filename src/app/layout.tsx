@@ -2,6 +2,8 @@ import "./globals.css";
 
 import type { Metadata } from "next";
 
+import { Navbar } from "@/features/navigation";
+
 export const metadata: Metadata = {
   title: "Cats Articles | Frontend Exercise",
   description: "Frontend Exercise in Next.js",
@@ -14,7 +16,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }
