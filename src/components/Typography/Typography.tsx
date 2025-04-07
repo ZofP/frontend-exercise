@@ -1,14 +1,8 @@
-import { HTMLAttributes, ReactNode } from "react";
 import clsx from "clsx";
 
-import { TypographyVariant } from "./Typography.types";
-import { isHeadingVariant, typographyClassesMapper } from "./utils";
-
-interface TypographyProps
-  extends HTMLAttributes<HTMLHeadingElement | HTMLParagraphElement> {
-  children: ReactNode;
-  variant: TypographyVariant;
-}
+import { TypographyProps } from "@/types/ui";
+import { typographyClassesMapper } from "@/utils";
+import { isHeadingVariant } from "./utils";
 
 /**
  * A typography helper component that renders text with a specific variant (e.g. `h1`, `body`, `small`).
@@ -18,7 +12,7 @@ interface TypographyProps
  * <Typography variant="body">This is a regular paragraph</Typography>
  */
 export const Typography = ({
-  variant,
+  variant = "body",
   children,
   className,
   ...props

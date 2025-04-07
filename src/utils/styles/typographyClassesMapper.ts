@@ -1,4 +1,4 @@
-import { TypographyVariant } from "../Typography.types";
+import { TypographyVariant } from "@/types";
 
 export const typographyClassesMapper: Record<TypographyVariant, string> = {
   h1: "text-[40px] leading-[48px]",
@@ -10,7 +10,7 @@ export const typographyClassesMapper: Record<TypographyVariant, string> = {
   "lead-blockquote": "text-[20px] leading-[30px]",
   body: "text-[16px] leading-[24px]",
   "body-bold": "text-[16px] leading-[24px] font-bold",
-  "body-xl": "text-[20px] leading-[170px]", // double-checked; long line-height
+  "body-xl": "text-[20px] leading-[170px]",
   "body-underlined": "text-[16px] leading-[24px] underline",
   "body-italics": "text-[16px] leading-[24px] italic",
   small: "text-[14px] leading-[20px]",
