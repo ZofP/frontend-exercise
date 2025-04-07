@@ -1,4 +1,4 @@
-import { TypographyHeadingVariant } from "../Typography.types";
+import { TypographyHeadingVariant } from "@/types";
 
 const allowedVariants = ["h1", "h2", "h3", "h4", "h5", "h6"];
 
