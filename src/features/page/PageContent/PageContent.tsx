@@ -11,8 +11,11 @@ export const PageContent = ({
   ...props
 }: PageContentProps) => {
   return (
-    <div className={clsx("flex justify-center", className)} {...props}>
+    <section
+      className={clsx("flex justify-center pt-[64px]", className)}
+      {...props}
+    >
       <ThinContentWrapper>{children}</ThinContentWrapper>
-    </div>
+    </section>
   );
 };

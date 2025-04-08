@@ -4,7 +4,11 @@
     "about": "About",
     "login": "Log in"
   },
-  "home": {
-    "heading": "Recent Articles"
+  "pages": {
+    "common": {
+      "home": {
+        "heading": "Recent Articles"
+      }
+    }
   }
 }
