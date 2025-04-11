@@ -1,16 +1,16 @@
 import { useTranslations } from "next-intl";
 
 import { Typography } from "@/components";
-import { PageContent } from "@/features/page";
+import { ArticlesList } from "@/features/article/components/ArticlesList";
 
 export default function HomePage() {
   const t = useTranslations("pages.common.home");
   return (
-    <PageContent>
-      <div className="flex flex-col gap-[60px]">
-        <Typography variant="h1">{t("heading")}</Typography>
-        <div>cards list</div>
+    <div className="flex flex-col gap-[60px]">
+      <Typography variant="h1">{t("heading")}</Typography>
+      <div className="flex flex-col gap-[32px]">
+        <ArticlesList />
       </div>
-    </PageContent>
+    </div>
   );
 }

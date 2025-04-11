@@ -12,10 +12,8 @@ export const ThinContentWrapper = ({
 }: ThinContentWrapperProps) => {
   return (
     <div
-      className={clsx(
-        `flex w-[calc(100%-2*${sideMargin}px)] items-center justify-between`,
-        className
-      )}
+      className={clsx("flex items-center justify-between", className)}
+      style={{ width: `calc(100% - 2 * ${sideMargin}px)` }}
       {...props}
     />
   );

@@ -8,7 +8,7 @@ import { NavbarLink } from "./NavbarLink";
 const {
   common: { home, about },
   anonymous: { login },
-} = CONFIG.routes;
+} = CONFIG.app.routes;
 
 export const Navbar = () => {
   const t = useTranslations("navbar");

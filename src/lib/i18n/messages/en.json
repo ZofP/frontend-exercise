@@ -10,5 +10,10 @@
         "heading": "Recent Articles"
       }
     }
+  },
+  "article": {
+    "readWholeArticle": "Read whole article",
+    "numberOfComments": "{amount} comments",
+    "unknownAuthor": "Unknown Author"
   }
 }
