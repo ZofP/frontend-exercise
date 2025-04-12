@@ -4,7 +4,7 @@ import { Link, Typography } from "@/components";
 import { CONFIG } from "@/config";
 import { Article } from "@/types/article";
 import { formatDate } from "@/utils";
-import { ArticleCardImage } from "./ArticleCardImage";
+import { ArticleImage } from "../ArticleImage";
 
 export const ArticleCard = ({
   articleId,
@@ -16,17 +16,17 @@ export const ArticleCard = ({
   const t = useTranslations("article");
 
   return (
-    <article className="flex gap-[24px] h-[244px]">
-      <ArticleCardImage imageId={imageId} />
-      <div className="flex flex-col gap-[16px]">
+    <article className="flex gap-24 h-244">
+      <ArticleImage imageId={imageId} width={272} height={244} />
+      <div className="flex flex-col gap-16">
         <Typography variant="h4">{title}</Typography>
-        <div className="flex gap-[8px] items-center text-secondary">
+        <div className="flex gap-8 items-center text-secondary">
           <Typography variant="small">{t("unknownAuthor")}</Typography>
-          <div className="w-[4px] h-[4px] rounded-full bg-secondary" />
+          <div className="w-4p h-4 rounded-full bg-secondary" />
           <Typography variant="small">{formatDate(createdAt)}</Typography>
         </div>
         <Typography>{perex}</Typography>
-        <div className="flex gap-[11px]">
+        <div className="flex gap-11">
           <Link
             href={{
               pathname: CONFIG.app.routes.common.articleDetail.replace(
