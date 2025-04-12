@@ -14,9 +14,9 @@ export const Navbar = () => {
   const t = useTranslations("navbar");
 
   return (
-    <nav className="flex h-[56px] bg-light justify-center pt-[3px]">
+    <nav className="flex h-56 bg-light justify-center pt-3">
       <ThinContentWrapper>
-        <div className="flex gap-[40px] items-center">
+        <div className="flex gap-40 items-center">
           <Image src="/images/logo.png" alt="logo" width={39} height={44} />
           <NavbarLink href={home}>{t("recentArticles")}</NavbarLink>
           <NavbarLink href={about}>{t("about")}</NavbarLink>

@@ -12,7 +12,7 @@ export const PageContent = ({
 }: PageContentProps) => {
   return (
     <section
-      className={clsx("flex justify-center pt-[64px]", className)}
+      className={clsx("flex justify-center pt-64", className)}
       {...props}
     >
       <ThinContentWrapper>{children}</ThinContentWrapper>
