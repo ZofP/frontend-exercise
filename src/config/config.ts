@@ -1,5 +1,7 @@
-import { ROUTES_CONFIG } from "./routes/routes";
+import { API_CONFIG } from "./api";
+import { APP_CONFIG } from "./app";
 
 export const CONFIG = {
-  routes: ROUTES_CONFIG,
+  app: APP_CONFIG,
+  api: API_CONFIG,
 };

@@ -1,22 +1,22 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 
-import { ArrowRightIcon, Link } from "@/components";
+import { ArrowRightIcon, Link, ThinContentWrapper } from "@/components";
 import { CONFIG } from "@/config";
 import { NavbarLink } from "./NavbarLink";
 
 const {
   common: { home, about },
   anonymous: { login },
-} = CONFIG.routes;
+} = CONFIG.app.routes;
 
 export const Navbar = () => {
   const t = useTranslations("navbar");
 
   return (
-    <nav className="flex h-[56px] bg-light justify-center pt-[3px]">
-      <div className="flex w-[calc(100%-2*224px)] items-center justify-between">
-        <div className="flex gap-[40px] items-center">
+    <nav className="flex h-56 bg-light justify-center pt-3">
+      <ThinContentWrapper>
+        <div className="flex gap-40 items-center">
           <Image src="/images/logo.png" alt="logo" width={39} height={44} />
           <NavbarLink href={home}>{t("recentArticles")}</NavbarLink>
           <NavbarLink href={about}>{t("about")}</NavbarLink>
@@ -27,7 +27,7 @@ export const Navbar = () => {
             <ArrowRightIcon />
           </div>
         </Link>
-      </div>
+      </ThinContentWrapper>
     </nav>
   );
 };

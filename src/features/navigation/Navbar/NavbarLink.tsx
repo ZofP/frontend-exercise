@@ -7,7 +7,6 @@ import { LinkProps } from "@/types";
 
 export const NavbarLink = <T,>({ href, ...props }: LinkProps<T>) => {
   const pathname = usePathname();
-  console.log({ pathname, href });
 
   return (
     <Link

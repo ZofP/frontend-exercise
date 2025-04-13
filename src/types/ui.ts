@@ -27,3 +27,7 @@ export interface LinkProps<T>
     Pick<TypographyProps, "variant"> {
   className?: string;
 }
+
+export interface GenericPageProps<T extends Record<string, string>> {
+  params: Promise<T>;
+}
