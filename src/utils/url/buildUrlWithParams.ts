@@ -8,7 +8,7 @@ export const buildPathWithParams = (
   const searchParams = new URLSearchParams();
 
   Object.entries(params).forEach(([key, value]) => {
-    if (value === undefined) {
+    if (!value) {
       return;
     }
     searchParams.set(key, String(value));

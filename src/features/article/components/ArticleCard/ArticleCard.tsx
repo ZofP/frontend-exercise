@@ -3,7 +3,7 @@ import { useTranslations } from "next-intl";
 import { Link, Typography } from "@/components";
 import { CONFIG } from "@/config";
 import { Article } from "@/types/article";
-import { formatDate } from "@/utils";
+import { ArticleAuthorDate } from "../ArticleAuthorDate";
 import { ArticleImage } from "../ArticleImage";
 
 export const ArticleCard = ({
@@ -20,11 +20,7 @@ export const ArticleCard = ({
       <ArticleImage imageId={imageId} width={272} height={244} />
       <div className="flex flex-col gap-16">
         <Typography variant="h4">{title}</Typography>
-        <div className="flex gap-8 items-center text-secondary">
-          <Typography variant="small">{t("unknownAuthor")}</Typography>
-          <div className="w-4p h-4 rounded-full bg-secondary" />
-          <Typography variant="small">{formatDate(createdAt)}</Typography>
-        </div>
+        <ArticleAuthorDate createdAt={createdAt} />
         <Typography>{perex}</Typography>
         <div className="flex gap-11">
           <Link
