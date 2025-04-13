@@ -1,5 +1,8 @@
 export const ENDPOINTS_CONFIG = {
   anonymous: {
+    login: "/login",
+  },
+  common: {
     articles: "/articles",
     articleById: "/articles/:articleId",
     commentsForArticle: "/articles/:articleId/comments",
@@ -7,7 +10,6 @@ export const ENDPOINTS_CONFIG = {
     createImage: "/images",
   },
   admin: {
-    login: "/admin/auth/login",
     refreshToken: "/admin/auth/refresh",
     tenants: "/admin/tenants",
     tenantById: "/admin/tenants/:tenantId",

@@ -2,6 +2,7 @@ import "./globals.scss";
 
 import { ReactNode } from "react";
 import type { Metadata } from "next";
+import { NextIntlClientProvider } from "next-intl";
 
 import { PageContent } from "@/components";
 import { Navbar } from "@/features/navigation";
@@ -19,8 +20,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <body className="antialiased">
-        <Navbar />
-        <PageContent>{children}</PageContent>
+        <NextIntlClientProvider>
+          <Navbar />
+          <PageContent>{children}</PageContent>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

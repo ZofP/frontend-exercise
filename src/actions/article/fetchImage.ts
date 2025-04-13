@@ -3,7 +3,7 @@
 import { CONFIG } from "@/config";
 import { buildPathWithParams } from "@/utils/url";
 
-const { getImage } = CONFIG.api.endpoints.anonymous;
+const { getImage } = CONFIG.api.endpoints.common;
 
 export const fetchImage = async (imageId: string) => {
   const res = await fetch(
