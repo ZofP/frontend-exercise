@@ -17,15 +17,11 @@ export const Typography = ({
   className,
   ...props
 }: TypographyProps) => {
-  const appliedClasses = clsx(typographyClassesMapper[variant], className);
   if (isHeadingVariant(variant)) {
     const Tag = variant;
-    return (
-      <Tag className={appliedClasses} {...props}>
-        {children}
-      </Tag>
-    );
+    return <Tag {...props}>{children}</Tag>;
   }
+  const appliedClasses = clsx(typographyClassesMapper[variant], className);
 
   return (
     <p className={appliedClasses} {...props}>
