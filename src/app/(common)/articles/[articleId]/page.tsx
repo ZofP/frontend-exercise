@@ -1,6 +1,10 @@
 import { fetchArticleById } from "@/actions/article";
 import { Typography } from "@/components";
-import { ArticleAuthorDate, ArticleImage } from "@/features/article";
+import {
+  ArticleAuthorDate,
+  ArticleDetailContent,
+  ArticleImage,
+} from "@/features/article";
 import { GenericPageProps } from "@/types";
 
 type ArticleDetailPageProps = GenericPageProps<{ articleId: string }>;
@@ -10,7 +14,7 @@ export default async function ArticleDetailPage({
 }: ArticleDetailPageProps) {
   const { articleId } = await params;
   const article = await fetchArticleById(articleId);
-  const { createdAt } = article;
+  const { createdAt, content } = article;
 
   console.log({ article });
 
@@ -22,7 +26,7 @@ export default async function ArticleDetailPage({
       </section>
       <section className="flex flex-col gap-24">
         <ArticleImage imageId={article.imageId} width={760} height={504} />
-        <Typography>{article.content}</Typography>
+        <ArticleDetailContent content={content} />
       </section>
     </main>
   );
