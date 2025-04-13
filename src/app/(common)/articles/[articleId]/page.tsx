@@ -19,15 +19,15 @@ export default async function ArticleDetailPage({
   console.log({ article });
 
   return (
-    <main className="flex flex-col gap-24 max-w-760">
-      <section className="flex flex-col gap-16">
+    <div className="flex flex-col gap-24 max-w-760">
+      <header className="flex flex-col gap-16">
         <Typography variant="h1">{article.title}</Typography>
         <ArticleAuthorDate createdAt={createdAt} />
-      </section>
+      </header>
       <section className="flex flex-col gap-24">
         <ArticleImage imageId={article.imageId} width={760} height={504} />
         <ArticleDetailContent content={content} />
       </section>
-    </main>
+    </div>
   );
 }

@@ -8,8 +8,8 @@ interface MarkdownContentProps {
 
 export const MarkdownContent = ({ content }: MarkdownContentProps) => {
   return (
-    <div className={styles.markdown}>
+    <article className={styles.markdown}>
       <ReactMarkdown>{content}</ReactMarkdown>
-    </div>
+    </article>
   );
 };

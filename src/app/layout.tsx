@@ -3,8 +3,8 @@ import "./globals.scss";
 import { ReactNode } from "react";
 import type { Metadata } from "next";
 
+import { PageContent } from "@/components";
 import { Navbar } from "@/features/navigation";
-import { PageContent } from "@/features/page";
 
 export const metadata: Metadata = {
   title: "Cats Articles | Frontend Exercise",
