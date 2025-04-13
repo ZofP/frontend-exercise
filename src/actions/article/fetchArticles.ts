@@ -5,16 +5,18 @@ import { ArticleList, articleListSchema } from "@/types/article";
 import { buildPathWithParams } from "@/utils/url";
 import { fetchBase } from "../helpers/fetchBase";
 
-export const fetchArticles = async (): Promise<ArticleList> => {
+type FetchArticlesArgs = Record<"limit" | "offset", number | undefined>;
+
+export const fetchArticles = async (
+  args?: FetchArticlesArgs
+): Promise<ArticleList> => {
   const res = await fetchBase(
-    buildPathWithParams(CONFIG.api.endpoints.anonymous.articles),
+    buildPathWithParams(CONFIG.api.endpoints.anonymous.articles, args),
     {
       method: "GET",
       next: { tags: ["articles"] },
     }
   );
-
-  console.log({ res });
 
   return articleListSchema.parse(res);
 };
