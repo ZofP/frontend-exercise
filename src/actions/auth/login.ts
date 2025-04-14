@@ -1,6 +1,7 @@
 "use server";
 
 import { cookies } from "next/headers";
+import { redirect, RedirectType } from "next/navigation";
 
 import { CONFIG } from "@/config";
 import { CookieKey } from "@/types";
@@ -16,9 +17,12 @@ export const login = async (credentials: LoginSchema) => {
   const { access_token, expires_in } = accessTokenSchema.parse(res);
   const cookie = await cookies();
   cookie.set(CookieKey.AccessToken, access_token, {
-    maxAge: expires_in,
+    // the cookie will be cleared about one minute before the token expires
+    maxAge: expires_in - 60,
     secure: true,
+    httpOnly: true,
+    sameSite: "strict",
   });
 
-  return accessTokenSchema.parse(res);
+  redirect(CONFIG.app.routes.admin.myArticles, RedirectType.replace);
 };

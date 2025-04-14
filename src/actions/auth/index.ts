@@ -1,2 +1,2 @@
-export * from "./checkAuthentication";
+export * from "./guardContent";
 export * from "./login";
