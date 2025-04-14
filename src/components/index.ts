@@ -2,6 +2,7 @@ export * from "./Button";
 export * from "./HookForm";
 export * from "./icons";
 export * from "./Link";
+export * from "./LoadingIndicator";
 export * from "./MarkdownContent";
 export * from "./PageContent";
 export * from "./TextInput";
