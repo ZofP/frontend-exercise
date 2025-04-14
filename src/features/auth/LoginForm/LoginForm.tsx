@@ -22,7 +22,6 @@ export const LoginForm = () => {
   });
   const { setError } = methods;
   const submitHandler: SubmitHandler<LoginSchema> = async (credentials) => {
-    console.log(credentials);
     try {
       await login(credentials);
     } catch {

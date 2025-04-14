@@ -3,8 +3,8 @@
 import { cookies } from "next/headers";
 
 import { CONFIG } from "@/config";
+import { CookieKey } from "@/types";
 
-type FetchBaseArgs = Parameters<typeof fetch>;
 interface ModifiedRequestInit extends Omit<RequestInit, "body"> {
   body?: Record<string, unknown>;
 }
@@ -13,15 +13,11 @@ export const fetchBase = async (
   path: string | URL | Request,
   init?: ModifiedRequestInit
 ) => {
-  console.log({ apiKey: CONFIG.app.env.apiKey });
-
-  const token = (await cookies()).get("accessToken")?.value;
+  const token = (await cookies()).get(CookieKey.AccessToken)?.value;
   const headers: Record<string, string> = {
     "Content-Type": "application/json",
     "X-API-KEY": CONFIG.app.env.apiKey,
   };
-  console.log({ token });
-
   if (token) {
     headers.Authorization = `Bearer ${token}`;
   }

@@ -3,6 +3,7 @@
 import { cookies } from "next/headers";
 
 import { CONFIG } from "@/config";
+import { CookieKey } from "@/types";
 import { accessTokenSchema, LoginSchema } from "@/types/auth";
 import { fetchBase } from "../helpers/fetchBase";
 
@@ -14,7 +15,10 @@ export const login = async (credentials: LoginSchema) => {
 
   const { access_token, expires_in } = accessTokenSchema.parse(res);
   const cookie = await cookies();
-  cookie.set("accessToken", access_token, { maxAge: expires_in });
+  cookie.set(CookieKey.AccessToken, access_token, {
+    maxAge: expires_in,
+    secure: true,
+  });
 
   return accessTokenSchema.parse(res);
 };
