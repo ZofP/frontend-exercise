@@ -1,7 +1,10 @@
 import "./globals.scss";
 
+import { ReactNode } from "react";
 import type { Metadata } from "next";
+import { NextIntlClientProvider } from "next-intl";
 
+import { PageContent } from "@/components";
 import { Navbar } from "@/features/navigation";
 
 export const metadata: Metadata = {
@@ -9,16 +12,18 @@ export const metadata: Metadata = {
   description: "Frontend Exercise in Next.js",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+interface RootLayoutProps {
+  children: ReactNode;
+}
+
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <body className="antialiased">
-        <Navbar />
-        {children}
+        <NextIntlClientProvider>
+          <Navbar />
+          <PageContent>{children}</PageContent>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

@@ -6,11 +6,11 @@ import { ArticlesList } from "@/features/article/components/ArticlesList";
 export default function HomePage() {
   const t = useTranslations("pages.common.home");
   return (
-    <main className="flex flex-col gap-60">
+    <div className="flex flex-col gap-60">
       <Typography variant="h1">{t("heading")}</Typography>
       <section className="flex flex-col gap-32">
         <ArticlesList />
       </section>
-    </main>
+    </div>
   );
 }

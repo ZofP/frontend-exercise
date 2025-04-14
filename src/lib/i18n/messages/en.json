@@ -9,11 +9,22 @@
       "home": {
         "heading": "Recent Articles"
       }
+    },
+    "anonymous": {
+      "login": {
+        "inputs": { "username": "User Name", "password": "Password" },
+        "title": "Log in",
+        "submitButtonText": "Log in"
+      }
     }
   },
   "article": {
     "readWholeArticle": "Read whole article",
     "numberOfComments": "{amount} comments",
     "unknownAuthor": "Unknown Author"
+  },
+  "errors": {
+    "wrongCredentials": "Nesprávné přihlašovací údaje.",
+    "thisFieldIsRequired": "Toto pole je povinné."
   }
 }

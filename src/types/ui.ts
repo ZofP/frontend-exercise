@@ -1,4 +1,9 @@
-import { HTMLAttributes, ReactNode } from "react";
+import {
+  ButtonHTMLAttributes,
+  DetailedHTMLProps,
+  HTMLAttributes,
+  ReactNode,
+} from "react";
 import { LinkProps as NextLinkProps } from "next/link";
 
 export type TypographyHeadingVariant = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
@@ -33,3 +38,8 @@ export interface LinkProps<T>
 export interface GenericPageProps<T extends Record<string, string>> {
   params: Promise<T>;
 }
+
+export type ButtonProps = DetailedHTMLProps<
+  ButtonHTMLAttributes<HTMLButtonElement>,
+  HTMLButtonElement
+>;

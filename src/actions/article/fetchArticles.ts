@@ -11,7 +11,7 @@ export const fetchArticles = async (
   args?: FetchArticlesArgs
 ): Promise<ArticleList> => {
   const res = await fetchBase(
-    buildPathWithParams(CONFIG.api.endpoints.anonymous.articles, args),
+    buildPathWithParams(CONFIG.api.endpoints.common.articles, args),
     {
       method: "GET",
       next: { tags: ["articles"] },

@@ -9,7 +9,7 @@ export const fetchArticleById = async (
   articleId: string
 ): Promise<ArticleDetail> => {
   const res = await fetchBase(
-    buildDynamicPath(CONFIG.api.endpoints.anonymous.articleById, { articleId }),
+    buildDynamicPath(CONFIG.api.endpoints.common.articleById, { articleId }),
     {
       method: "GET",
       next: { tags: [`article-${articleId}`] },
