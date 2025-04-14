@@ -3,7 +3,7 @@
 import { redirect, RedirectType } from "next/navigation";
 
 import { CONFIG } from "@/config";
-import { checkAuthenticated } from "./checkAuthenticated";
+import { getAccessToken } from "./getAccessToken";
 
 const {
   anonymous: { login },
@@ -11,8 +11,8 @@ const {
 } = CONFIG.app.routes;
 
 export const guardContent = async (shouldBeAuthenticated = true) => {
-  const isAuthenticated = await checkAuthenticated();
-  if (shouldBeAuthenticated === isAuthenticated) {
+  const accessToken = await getAccessToken();
+  if (shouldBeAuthenticated === !!accessToken) {
     return;
   }
   if (shouldBeAuthenticated) {

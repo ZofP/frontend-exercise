@@ -3,15 +3,11 @@
 import { cookies } from "next/headers";
 
 import { CONFIG } from "@/config";
-import { CookieKey } from "@/types";
-
-interface ModifiedRequestInit extends Omit<RequestInit, "body"> {
-  body?: Record<string, unknown>;
-}
+import { CookieKey, ExtendedRequestInit } from "@/types";
 
 export const fetchBase = async (
   path: string | URL | Request,
-  init?: ModifiedRequestInit
+  init?: ExtendedRequestInit
 ) => {
   const token = (await cookies()).get(CookieKey.AccessToken)?.value;
   const headers: Record<string, string> = {
@@ -21,22 +17,21 @@ export const fetchBase = async (
   if (token) {
     headers.Authorization = `Bearer ${token}`;
   }
+  const fullUrl = `${CONFIG.app.env.apiUrl}${path}`;
 
   if (!init) {
-    return await fetch(`${CONFIG.app.env.apiUrl}${path}`, { headers });
+    return await fetch(fullUrl, { headers });
   }
 
   const { body, ...restInit } = init;
   const options: RequestInit = {
     ...restInit,
-    headers,
+    headers: { ...restInit.headers, ...headers },
   };
   if (body) {
     options.body = JSON.stringify(body);
   }
-  const res = await fetch(`${CONFIG.app.env.apiUrl}${path}`, options);
-
-  console.log({ res });
+  const res = await fetch(fullUrl, options);
 
   return await res.json();
 };

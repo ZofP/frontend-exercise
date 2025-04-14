@@ -16,7 +16,5 @@ export const fetchArticleById = async (
     }
   );
 
-  console.log({ res });
-
   return articleDetailSchema.parse(res);
 };

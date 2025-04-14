@@ -24,7 +24,5 @@ export const fetchImage = async (imageId: string) => {
     return null;
   }
 
-  console.log({ res });
-
   return await res.blob();
 };
