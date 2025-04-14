@@ -14,7 +14,7 @@ export const articleSchema = z.object({
 export type Article = z.infer<typeof articleSchema>;
 
 export const articleDetailSchema = articleSchema.extend({
-  content: z.string(),
+  content: z.string().nullable(),
   comments: z.array(commentSchema),
 });
 export type ArticleDetail = z.infer<typeof articleDetailSchema>;
