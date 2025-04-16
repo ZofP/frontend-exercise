@@ -2,7 +2,10 @@
   "navbar": {
     "recentArticles": "Recent Articles",
     "about": "About",
-    "login": "Log in"
+    "login": "Log in",
+    "myArticles": "My Articles",
+    "logout": "Logout",
+    "newArticle": "Create Article"
   },
   "pages": {
     "common": {

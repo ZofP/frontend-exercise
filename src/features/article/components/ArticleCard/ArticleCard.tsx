@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 
 import { Link, Typography } from "@/components";
-import { CONFIG } from "@/config";
+import { APP_CONFIG } from "@/config/app";
 import { Article } from "@/types/article";
 import { ArticleAuthorDate } from "../ArticleAuthorDate";
 import { ArticleImage } from "../ArticleImage";
@@ -25,7 +25,7 @@ export const ArticleCard = ({
         <div className="flex gap-11">
           <Link
             href={{
-              pathname: CONFIG.app.routes.common.articleDetail.replace(
+              pathname: APP_CONFIG.routes.common.articleDetail.replace(
                 ":id",
                 articleId
               ),

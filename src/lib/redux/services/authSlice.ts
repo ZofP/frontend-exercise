@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { AuthState } from "./types";
+import { AuthState } from "../types";
 
 const initialState: AuthState = {
   isAuthenticated: false,
@@ -12,6 +12,7 @@ export const authSlice = createSlice({
   reducers: {
     setAuthenticated: (state) => {
       state.isAuthenticated = true;
+      console.log("setAuthenticated");
     },
 
     setAnonymous: () => {

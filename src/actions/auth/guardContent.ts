@@ -2,13 +2,13 @@
 
 import { redirect, RedirectType } from "next/navigation";
 
-import { CONFIG } from "@/config";
+import { APP_CONFIG } from "@/config/app";
 import { getAccessToken } from "./getAccessToken";
 
 const {
   anonymous: { login },
   admin: { myArticles },
-} = CONFIG.app.routes;
+} = APP_CONFIG.routes;
 
 export const guardContent = async (shouldBeAuthenticated = true) => {
   const accessToken = await getAccessToken();

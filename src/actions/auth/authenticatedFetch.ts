@@ -2,14 +2,14 @@
 
 import { redirect, RedirectType } from "next/navigation";
 
-import { CONFIG } from "@/config";
+import { APP_CONFIG } from "@/config/app";
 import { ExtendedRequestInit } from "@/types";
 import { fetchBase } from "../helpers/fetchBase";
 import { getAccessToken } from "./getAccessToken";
 
 const {
   anonymous: { login },
-} = CONFIG.app.routes;
+} = APP_CONFIG.routes;
 
 export const authenticatedFetch = async (
   path: string | URL | Request,

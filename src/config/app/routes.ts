@@ -6,7 +6,7 @@ export const ROUTES_CONFIG = {
   },
   anonymous: { login: "/login" },
   admin: {
-    myArticles: "/my-articles",
-    newArticle: "/articles/new",
+    myArticles: "/admin/articles",
+    newArticle: "/admin/articles/new",
   },
 } as const;

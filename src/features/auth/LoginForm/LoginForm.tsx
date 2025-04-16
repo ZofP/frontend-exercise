@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 
 import { login } from "@/actions/auth";
 import { HookForm, Typography } from "@/components";
+import { setAuthenticated, useAppDispatch } from "@/lib/redux";
 import { FormInputErrorMessageTypeEnum } from "@/types";
 import { LoginSchema, loginSchema } from "@/types/auth";
 
@@ -20,11 +21,15 @@ export const LoginForm = () => {
     resolver: zodResolver(loginSchema(t)),
     defaultValues,
   });
+  const dispatch = useAppDispatch();
   const { setError } = methods;
   const submitHandler: SubmitHandler<LoginSchema> = async (credentials) => {
     try {
       await login(credentials);
-    } catch {
+      dispatch(setAuthenticated());
+    } catch (error) {
+      console.log({ error });
+
       setError("password", {
         message: t(FormInputErrorMessageTypeEnum.WrongCredentials),
       });

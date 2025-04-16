@@ -1,6 +1,6 @@
 import "./globals.scss";
 
-import { ReactNode } from "react";
+import { PropsWithChildren } from "react";
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 
@@ -14,11 +14,7 @@ export const metadata: Metadata = {
   description: "Frontend Exercise in Next.js",
 };
 
-interface RootLayoutProps {
-  children: ReactNode;
-}
-
-export default async function RootLayout({ children }: RootLayoutProps) {
+export default async function RootLayout({ children }: PropsWithChildren) {
   const token = await getAccessToken();
 
   console.log({ token });
@@ -26,7 +22,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <body className="antialiased">
-        <ReduxProvider>
+        <ReduxProvider preloadedState={{ auth: { isAuthenticated: !!token } }}>
           <NextIntlClientProvider>
             <Navbar />
             <PageContent>{children}</PageContent>

@@ -3,13 +3,14 @@
 import { cookies } from "next/headers";
 import { redirect, RedirectType } from "next/navigation";
 
-import { CONFIG } from "@/config";
+import { API_CONFIG } from "@/config/api";
+import { APP_CONFIG } from "@/config/app";
 import { CookieKey } from "@/types";
 import { accessTokenSchema, LoginSchema } from "@/types/auth";
 import { fetchBase } from "../helpers/fetchBase";
 
 export const login = async (credentials: LoginSchema) => {
-  const res = await fetchBase(CONFIG.api.endpoints.anonymous.login, {
+  const res = await fetchBase(API_CONFIG.endpoints.anonymous.login, {
     method: "POST",
     body: credentials,
   });
@@ -23,6 +24,12 @@ export const login = async (credentials: LoginSchema) => {
     httpOnly: true,
     sameSite: "strict",
   });
-
-  redirect(CONFIG.app.routes.admin.myArticles, RedirectType.replace);
+  /*
+   The following try-catch block is there to prevent throwing the redirection error (status 307),
+   which would otherwise be rethrown to the login form submit handler.
+   Such error would cause dispatch(setAuthenticated()) not to run, and the UI (navigation bar) would not be updated accordingly.
+  */
+  try {
+    redirect(APP_CONFIG.routes.admin.myArticles, RedirectType.replace);
+  } catch {}
 };

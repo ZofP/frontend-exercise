@@ -1,18 +1,18 @@
 "use server";
 
-import { CONFIG } from "@/config";
+import { API_CONFIG } from "@/config/api";
 import { ExtendedRequestInit } from "@/types";
 
 const DEFAULT_HEADERS: Record<string, string> = {
   "Content-Type": "application/json",
-  "X-API-KEY": CONFIG.app.env.apiKey,
+  "X-API-KEY": API_CONFIG.env.apiKey,
 };
 
 export const fetchBase = async (
   path: string | URL | Request,
   init?: ExtendedRequestInit
 ) => {
-  const fullUrl = `${CONFIG.app.env.apiUrl}${path}`;
+  const fullUrl = `${API_CONFIG.env.apiUrl}${path}`;
 
   if (!init) {
     return await fetch(fullUrl, { headers: DEFAULT_HEADERS });

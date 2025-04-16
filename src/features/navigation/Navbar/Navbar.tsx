@@ -1,14 +1,15 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 
-import { ArrowRightIcon, Link, ThinContentWrapper } from "@/components";
-import { CONFIG } from "@/config";
+import { ThinContentWrapper } from "@/components";
+import { APP_CONFIG } from "@/config/app";
 import { NavbarLink } from "./NavbarLink";
+import { ProtectedLinks } from "./ProtectedLinks";
 
 const {
   common: { home, about },
   anonymous: { login },
-} = CONFIG.app.routes;
+} = APP_CONFIG.routes;
 
 export const Navbar = () => {
   const t = useTranslations("navbar");
@@ -21,12 +22,7 @@ export const Navbar = () => {
           <NavbarLink href={home}>{t("recentArticles")}</NavbarLink>
           <NavbarLink href={about}>{t("about")}</NavbarLink>
         </div>
-        <Link href={login} className="text-primary">
-          <div className="flex items-center">
-            {t("login")}
-            <ArrowRightIcon />
-          </div>
-        </Link>
+        <ProtectedLinks />
       </ThinContentWrapper>
     </nav>
   );
