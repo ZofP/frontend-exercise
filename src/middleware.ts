@@ -18,8 +18,10 @@ import { APP_CONFIG } from "./config/app";
 
 export function middleware(request: NextRequest) {
   const accessToken = request.cookies.get(CookieKey.AccessToken)?.value;
-  console.log("middleware runs", accessToken, request.url);
-
+  console.log("middleware runs", accessToken, request.url, {
+    nextUrl: request.nextUrl,
+    referrer: request.referrer,
+  });
   if (!accessToken) {
     console.log("redirecting");
 

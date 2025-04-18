@@ -4,8 +4,8 @@ import { redirect, RedirectType } from "next/navigation";
 
 import { APP_CONFIG } from "@/config/app";
 import { ExtendedRequestInit } from "@/types";
-import { fetchBase } from "../helpers/fetchBase";
-import { getAccessToken } from "./getAccessToken";
+import { getAccessToken } from "../auth/getAccessToken";
+import { fetchBase } from "./fetchBase";
 
 const {
   anonymous: { login },

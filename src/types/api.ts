@@ -5,3 +5,5 @@ export enum CookieKey {
 export interface ExtendedRequestInit extends Omit<RequestInit, "body"> {
   body?: Record<string, unknown>;
 }
+
+export type PaginatedFetchArgs = Record<"limit" | "offset", number | undefined>;

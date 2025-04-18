@@ -3,7 +3,7 @@
 import { useTranslations } from "next-intl";
 
 import { logout } from "@/actions/auth";
-import { ArrowRightIcon, Button, Link } from "@/components";
+import { ArrowRightIcon, Button, TypographyLink } from "@/components";
 import { APP_CONFIG } from "@/config/app";
 import { setAnonymous, useAppDispatch, useAuth } from "@/lib/redux";
 import { NavbarLink } from "./NavbarLink";
@@ -21,12 +21,12 @@ export const ProtectedLinks = () => {
   console.log({ isAuthenticated });
   if (!isAuthenticated) {
     return (
-      <Link href={login} className="text-primary">
+      <TypographyLink href={login} className="text-primary">
         <div className="flex items-center">
           {t("login")}
           <ArrowRightIcon />
         </div>
-      </Link>
+      </TypographyLink>
     );
   }
 
@@ -38,9 +38,9 @@ export const ProtectedLinks = () => {
   return (
     <div className="flex gap-40 items-center">
       <NavbarLink href={myArticles}>{t("myArticles")}</NavbarLink>
-      <Link href={newArticle} className="text-primary">
+      <TypographyLink href={newArticle} className="text-primary">
         {t("newArticle")}
-      </Link>
+      </TypographyLink>
       <Button onClick={handleLogout}>{t("logout")}</Button>
     </div>
   );

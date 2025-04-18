@@ -24,12 +24,6 @@ export const login = async (credentials: LoginSchema) => {
     httpOnly: true,
     sameSite: "strict",
   });
-  /*
-   The following try-catch block is there to prevent throwing the redirection error (status 307),
-   which would otherwise be rethrown to the login form submit handler.
-   Such error would cause dispatch(setAuthenticated()) not to run, and the UI (navigation bar) would not be updated accordingly.
-  */
-  try {
-    redirect(APP_CONFIG.routes.admin.myArticles, RedirectType.replace);
-  } catch {}
+
+  redirect(APP_CONFIG.routes.admin.myArticles, RedirectType.replace);
 };

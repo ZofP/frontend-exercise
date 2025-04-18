@@ -19,6 +19,12 @@
         "title": "Log in",
         "submitButtonText": "Log in"
       }
+    },
+    "admin": {
+      "myArticles": {
+        "heading": "My Articles",
+        "newArticle": "New Article"
+      }
     }
   },
   "article": {

@@ -12,7 +12,7 @@ export default async function ArticleDetailPage({
 }: ArticleDetailPageProps) {
   const { articleId } = await params;
   const article = await fetchArticleById(articleId);
-  const { createdAt, content } = article;
+  const { createdAt, content, title, imageId } = article;
 
   console.log({ article });
 
@@ -20,11 +20,11 @@ export default async function ArticleDetailPage({
     <Suspense fallback={<LoadingIndicator />}>
       <div className="flex flex-col gap-24 max-w-760">
         <header className="flex flex-col gap-16">
-          <Typography variant="h1">{article.title}</Typography>
+          <Typography variant="h1">{title}</Typography>
           <ArticleAuthorDate createdAt={createdAt} />
         </header>
         <section className="flex flex-col gap-24">
-          <ArticleImage imageId={article.imageId} width={760} height={504} />
+          <ArticleImage imageId={imageId} width={760} height={504} />
           <MarkdownContent content={content ?? ""} />
         </section>
       </div>
