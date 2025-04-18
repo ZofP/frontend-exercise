@@ -1,6 +1,7 @@
+import { Suspense } from "react";
 import { useTranslations } from "next-intl";
 
-import { Typography } from "@/components";
+import { LoadingIndicator, Typography } from "@/components";
 import { ArticlesList } from "@/features/article/components/ArticlesList";
 
 export default function HomePage() {
@@ -9,7 +10,9 @@ export default function HomePage() {
     <div className="flex flex-col gap-60">
       <Typography variant="h1">{t("heading")}</Typography>
       <section className="flex flex-col gap-32">
-        <ArticlesList />
+        <Suspense fallback={<LoadingIndicator />}>
+          <ArticlesList />
+        </Suspense>
       </section>
     </div>
   );

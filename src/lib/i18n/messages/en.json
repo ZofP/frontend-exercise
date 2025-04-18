@@ -2,7 +2,10 @@
   "navbar": {
     "recentArticles": "Recent Articles",
     "about": "About",
-    "login": "Log in"
+    "login": "Log in",
+    "myArticles": "My Articles",
+    "logout": "Logout",
+    "newArticle": "Create Article"
   },
   "pages": {
     "common": {
@@ -15,6 +18,12 @@
         "inputs": { "username": "User Name", "password": "Password" },
         "title": "Log in",
         "submitButtonText": "Log in"
+      }
+    },
+    "admin": {
+      "myArticles": {
+        "heading": "My Articles",
+        "newArticle": "New Article"
       }
     }
   },

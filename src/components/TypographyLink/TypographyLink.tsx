@@ -4,7 +4,7 @@ import NextLink from "next/link";
 import { LinkProps } from "@/types";
 import { typographyClassesMapper } from "@/utils";
 
-export const Link = <T,>({
+export const TypographyLink = <T,>({
   variant = "body",
   className,
   children,

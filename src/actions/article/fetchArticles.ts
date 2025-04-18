@@ -1,22 +1,14 @@
 "use server";
 
-import { CONFIG } from "@/config";
+import { PaginatedFetchArgs } from "@/types";
 import { ArticleList, articleListSchema } from "@/types/article";
-import { buildPathWithParams } from "@/utils/url";
 import { fetchBase } from "../helpers/fetchBase";
-
-type FetchArticlesArgs = Record<"limit" | "offset", number | undefined>;
+import { getFetchArticlesArgs } from "./getFetchArticlesArgs";
 
 export const fetchArticles = async (
-  args?: FetchArticlesArgs
+  args?: PaginatedFetchArgs
 ): Promise<ArticleList> => {
-  const res = await fetchBase(
-    buildPathWithParams(CONFIG.api.endpoints.common.articles, args),
-    {
-      method: "GET",
-      next: { tags: ["articles"] },
-    }
-  );
+  const res = await fetchBase(...getFetchArticlesArgs(args));
 
   return articleListSchema.parse(res);
 };

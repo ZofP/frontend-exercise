@@ -1,8 +1,9 @@
 import { useTranslations } from "next-intl";
 
-import { Link, Typography } from "@/components";
-import { CONFIG } from "@/config";
+import { Typography, TypographyLink } from "@/components";
+import { APP_CONFIG } from "@/config/app";
 import { Article } from "@/types/article";
+import { buildDynamicPath } from "@/utils";
 import { ArticleAuthorDate } from "../ArticleAuthorDate";
 import { ArticleImage } from "../ArticleImage";
 
@@ -23,18 +24,18 @@ export const ArticleCard = ({
         <ArticleAuthorDate createdAt={createdAt} />
         <Typography>{perex}</Typography>
         <div className="flex gap-11">
-          <Link
+          <TypographyLink
             href={{
-              pathname: CONFIG.app.routes.common.articleDetail.replace(
-                ":id",
-                articleId
+              pathname: buildDynamicPath(
+                APP_CONFIG.routes.common.articleDetail,
+                { articleId }
               ),
             }}
             variant="small"
             className="text-primary"
           >
             {t("readWholeArticle")}
-          </Link>
+          </TypographyLink>
         </div>
       </div>
     </article>

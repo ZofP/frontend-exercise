@@ -2,7 +2,7 @@ import {
   ButtonHTMLAttributes,
   DetailedHTMLProps,
   HTMLAttributes,
-  ReactNode,
+  PropsWithChildren,
 } from "react";
 import { LinkProps as NextLinkProps } from "next/link";
 
@@ -22,8 +22,8 @@ export type TypographyVariant =
   | TypographyParagraphVariant;
 
 export interface TypographyProps
-  extends HTMLAttributes<HTMLHeadingElement | HTMLParagraphElement> {
-  children: ReactNode;
+  extends HTMLAttributes<HTMLHeadingElement | HTMLParagraphElement>,
+    PropsWithChildren {
   variant?: TypographyVariant;
 }
 

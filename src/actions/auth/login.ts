@@ -3,13 +3,14 @@
 import { cookies } from "next/headers";
 import { redirect, RedirectType } from "next/navigation";
 
-import { CONFIG } from "@/config";
+import { API_CONFIG } from "@/config/api";
+import { APP_CONFIG } from "@/config/app";
 import { CookieKey } from "@/types";
 import { accessTokenSchema, LoginSchema } from "@/types/auth";
 import { fetchBase } from "../helpers/fetchBase";
 
 export const login = async (credentials: LoginSchema) => {
-  const res = await fetchBase(CONFIG.api.endpoints.anonymous.login, {
+  const res = await fetchBase(API_CONFIG.endpoints.anonymous.login, {
     method: "POST",
     body: credentials,
   });
@@ -24,5 +25,5 @@ export const login = async (credentials: LoginSchema) => {
     sameSite: "strict",
   });
 
-  redirect(CONFIG.app.routes.admin.myArticles, RedirectType.replace);
+  redirect(APP_CONFIG.routes.admin.myArticles, RedirectType.replace);
 };

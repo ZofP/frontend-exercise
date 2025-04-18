@@ -2,11 +2,12 @@ export const ROUTES_CONFIG = {
   common: {
     home: "/",
     about: "/about",
-    articleDetail: "/articles/:id",
+    articleDetail: "/articles/:articleId",
   },
   anonymous: { login: "/login" },
   admin: {
-    myArticles: "/my-articles",
-    newArticle: "/articles/new",
+    myArticles: "/admin/articles",
+    newArticle: "/admin/articles/new",
+    editArticle: "/admin/articles/:articleId/edit",
   },
 } as const;

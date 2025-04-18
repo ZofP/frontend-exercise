@@ -2,14 +2,14 @@
 import clsx from "clsx";
 import { usePathname } from "next/navigation";
 
-import { Link } from "@/components";
+import { TypographyLink } from "@/components";
 import { LinkProps } from "@/types";
 
 export const NavbarLink = <T,>({ href, ...props }: LinkProps<T>) => {
   const pathname = usePathname();
 
   return (
-    <Link
+    <TypographyLink
       href={href}
       {...props}
       className={clsx([

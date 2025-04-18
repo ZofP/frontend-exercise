@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode } from "react";
+import { PropsWithChildren } from "react";
 import {
   FieldValues,
   FormProvider,
@@ -12,8 +12,8 @@ import { HookFormSubmitButton } from "./HookFormSubmitButton";
 import { HookFormTextInput } from "./HookFormTextInput";
 
 interface HookFormProps<TFieldValues extends FieldValues = FieldValues>
-  extends UseFormReturn<TFieldValues> {
-  children?: ReactNode;
+  extends UseFormReturn<TFieldValues>,
+    PropsWithChildren {
   submitHandler: SubmitHandler<TFieldValues>;
 }
 

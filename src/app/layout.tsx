@@ -1,29 +1,33 @@
 import "./globals.scss";
 
-import { ReactNode } from "react";
+import { PropsWithChildren } from "react";
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 
+import { getAccessToken } from "@/actions/auth";
 import { PageContent } from "@/components";
 import { Navbar } from "@/features/navigation";
+import { ReduxProvider } from "@/lib/redux";
 
 export const metadata: Metadata = {
   title: "Cats Articles | Frontend Exercise",
   description: "Frontend Exercise in Next.js",
 };
 
-interface RootLayoutProps {
-  children: ReactNode;
-}
+export default async function RootLayout({ children }: PropsWithChildren) {
+  const token = await getAccessToken();
 
-export default function RootLayout({ children }: RootLayoutProps) {
+  console.log({ token });
+
   return (
     <html lang="en">
       <body className="antialiased">
-        <NextIntlClientProvider>
-          <Navbar />
-          <PageContent>{children}</PageContent>
-        </NextIntlClientProvider>
+        <ReduxProvider preloadedState={{ auth: { isAuthenticated: !!token } }}>
+          <NextIntlClientProvider>
+            <Navbar />
+            <PageContent>{children}</PageContent>
+          </NextIntlClientProvider>
+        </ReduxProvider>
       </body>
     </html>
   );

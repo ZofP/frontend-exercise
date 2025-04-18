@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 
 import { login } from "@/actions/auth";
 import { HookForm, Typography } from "@/components";
+import { setAuthenticated, useAppDispatch } from "@/lib/redux";
 import { FormInputErrorMessageTypeEnum } from "@/types";
 import { LoginSchema, loginSchema } from "@/types/auth";
 
@@ -20,11 +21,22 @@ export const LoginForm = () => {
     resolver: zodResolver(loginSchema(t)),
     defaultValues,
   });
+  const dispatch = useAppDispatch();
   const { setError } = methods;
+
+  const handleAuthentication = () => {
+    dispatch(setAuthenticated());
+  };
   const submitHandler: SubmitHandler<LoginSchema> = async (credentials) => {
     try {
       await login(credentials);
-    } catch {
+      handleAuthentication();
+    } catch (error) {
+      // This is needed so that the handleAuthentication runs if the error comes from the next redirect
+      if (error instanceof Error && error.message === "NEXT_REDIRECT") {
+        handleAuthentication();
+        return;
+      }
       setError("password", {
         message: t(FormInputErrorMessageTypeEnum.WrongCredentials),
       });
