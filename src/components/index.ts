@@ -1,4 +1,5 @@
 export * from "./Button";
+export * from "./Checkbox";
 export * from "./HookForm";
 export * from "./icons";
 export * from "./LoadingIndicator";

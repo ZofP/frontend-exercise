@@ -1,7 +1,7 @@
 import { getTranslations } from "next-intl/server";
 
 import { fetchArticlesWithDetails } from "@/actions/article";
-import { Table } from "@/components";
+import { Checkbox, Table } from "@/components";
 import { ArticleDetail } from "@/types/article";
 import { TableColumn, TableRowBase } from "@/types/table";
 import { DeleteArticleButton } from "./DeleteArticleButton";
@@ -9,11 +9,10 @@ import { EditArticleButton } from "./EditArticleButton";
 
 interface ArticlesTableData extends TableRowBase, ArticleDetail {
   commentsCount: number;
-  actions: string;
+  actions: "actions";
   author: string;
+  select: "select";
 }
-
-const getValue = <T, K extends keyof T>(obj: T, key: K): T[K] => obj[key];
 
 export const MyArticlesTable = async () => {
   const items = await fetchArticlesWithDetails();
@@ -29,9 +28,18 @@ export const MyArticlesTable = async () => {
       actions: "actions",
       author: t("unknownAuthor"),
       commentsCount: comments.length,
+      select: "select",
     };
   });
   const columns: TableColumn<ArticlesTableData>[] = [
+    {
+      header: "",
+      accessor: "select",
+      align: "center",
+      disableSort: true,
+      renderBodyCell: () => <Checkbox />,
+      renderHeaderCell: () => <Checkbox />,
+    },
     { header: "Article title", accessor: "title" },
     { header: "Perex", accessor: "perex" },
     { header: "Author", accessor: "author" },
@@ -44,14 +52,12 @@ export const MyArticlesTable = async () => {
       header: "Actions",
       accessor: "actions",
       align: "center",
-      render: (_, { articleId }) => {
-        return (
-          <div className="inline-flex space-x-2 justify-center gap-24">
-            <EditArticleButton articleId={articleId} />
-            <DeleteArticleButton articleId={articleId} />
-          </div>
-        );
-      },
+      renderBodyCell: (_, { articleId }) => (
+        <div className="inline-flex space-x-2 justify-center gap-24">
+          <EditArticleButton articleId={articleId} />
+          <DeleteArticleButton articleId={articleId} />
+        </div>
+      ),
     },
   ];
 

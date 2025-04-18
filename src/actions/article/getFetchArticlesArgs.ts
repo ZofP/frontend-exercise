@@ -8,6 +8,6 @@ export const getFetchArticlesArgs = (
   buildPathWithParams(API_CONFIG.endpoints.common.articles, args),
   {
     method: "GET",
-    next: { tags: ["articles"] },
+    next: { tags: ["articles-list"] },
   },
 ];

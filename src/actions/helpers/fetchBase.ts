@@ -27,6 +27,11 @@ export const fetchBase = async (
     options.body = JSON.stringify(body);
   }
   const res = await fetch(fullUrl, options);
+  if (!res.body) {
+    return;
+  }
+
+  console.log({ res });
 
   return await res.json();
 };

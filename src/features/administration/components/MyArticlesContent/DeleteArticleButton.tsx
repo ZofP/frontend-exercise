@@ -1,5 +1,6 @@
 "use client";
 
+import { deleteArticleById } from "@/actions/article";
 import { TrashIcon } from "@/components";
 
 interface DeleteArticleButtonProps {
@@ -11,6 +12,7 @@ export const DeleteArticleButton = ({
 }: DeleteArticleButtonProps) => {
   const handleDelete = () => {
     console.log("delete", articleId);
+    deleteArticleById(articleId);
   };
   return (
     <button onClick={handleDelete}>

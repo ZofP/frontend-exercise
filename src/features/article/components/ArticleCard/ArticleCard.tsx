@@ -3,6 +3,7 @@ import { useTranslations } from "next-intl";
 import { Typography, TypographyLink } from "@/components";
 import { APP_CONFIG } from "@/config/app";
 import { Article } from "@/types/article";
+import { buildDynamicPath } from "@/utils";
 import { ArticleAuthorDate } from "../ArticleAuthorDate";
 import { ArticleImage } from "../ArticleImage";
 
@@ -25,9 +26,9 @@ export const ArticleCard = ({
         <div className="flex gap-11">
           <TypographyLink
             href={{
-              pathname: APP_CONFIG.routes.common.articleDetail.replace(
-                ":id",
-                articleId
+              pathname: buildDynamicPath(
+                APP_CONFIG.routes.common.articleDetail,
+                { articleId }
               ),
             }}
             variant="small"
