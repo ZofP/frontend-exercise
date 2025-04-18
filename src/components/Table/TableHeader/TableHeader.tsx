@@ -10,13 +10,15 @@ export const TableHeader = <T,>({ columns }: TableHeaderProps<T>) => {
   return (
     <thead className="border-b border-table-border ">
       <tr>
-        {columns.map(({ header, align }) => (
+        {columns.map(({ header, align, disableSort, renderHeaderCell }) => (
           <TableGenericCell type="header" key={header} align={align}>
             <div className="flex items-center gap-4">
-              {header}
-              <button>
-                <SortIndicatorIcon />
-              </button>
+              {renderHeaderCell?.() ?? header}
+              {!disableSort && (
+                <button>
+                  <SortIndicatorIcon />
+                </button>
+              )}
             </div>
           </TableGenericCell>
         ))}

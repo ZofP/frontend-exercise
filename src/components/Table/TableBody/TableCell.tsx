@@ -10,7 +10,7 @@ interface TableBodyCellProps<T extends TableRowBase> {
 
 export const TableBodyCell = <T extends TableRowBase>({
   row,
-  column: { accessor, align, render },
+  column: { accessor, align, renderBodyCell: render },
 }: TableBodyCellProps<T>) => {
   const value = row[accessor];
 

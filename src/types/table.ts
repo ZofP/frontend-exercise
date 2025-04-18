@@ -1,10 +1,12 @@
 import { ReactNode } from "react";
 
 export type TableColumn<T> = {
-  header: string;
+  header?: string;
   accessor: keyof T;
   align?: TableCellAlignment;
-  render?: (value: T[keyof T], row: T) => ReactNode;
+  renderBodyCell?: (value: T[keyof T], row: T) => ReactNode;
+  renderHeaderCell?: () => ReactNode;
+  disableSort?: boolean;
 };
 
 export type TableRowBase = Record<"id", string>;
