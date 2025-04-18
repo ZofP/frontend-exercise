@@ -23,13 +23,20 @@ export const LoginForm = () => {
   });
   const dispatch = useAppDispatch();
   const { setError } = methods;
+
+  const handleAuthentication = () => {
+    dispatch(setAuthenticated());
+  };
   const submitHandler: SubmitHandler<LoginSchema> = async (credentials) => {
     try {
       await login(credentials);
-      dispatch(setAuthenticated());
+      handleAuthentication();
     } catch (error) {
-      console.log({ error });
-
+      // This is needed so that the handleAuthentication runs if the error comes from the next redirect
+      if (error instanceof Error && error.message === "NEXT_REDIRECT") {
+        handleAuthentication();
+        return;
+      }
       setError("password", {
         message: t(FormInputErrorMessageTypeEnum.WrongCredentials),
       });
