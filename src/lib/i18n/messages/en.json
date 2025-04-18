@@ -23,7 +23,16 @@
     "admin": {
       "myArticles": {
         "heading": "My Articles",
-        "newArticle": "New Article"
+        "newArticle": "New Article",
+        "table": {
+          "headers": {
+            "title": "Article title",
+            "perex": "Perex",
+            "author": "Author",
+            "commentsCount": "# of comments",
+            "actions": "Actions"
+          }
+        }
       }
     }
   },

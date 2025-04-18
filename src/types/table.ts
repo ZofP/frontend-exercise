@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 
 export type TableColumn<T> = {
-  header?: string;
+  header: string;
   accessor: keyof T;
   align?: TableCellAlignment;
   renderBodyCell?: (value: T[keyof T], row: T) => ReactNode;

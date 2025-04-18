@@ -10,7 +10,7 @@ export const MyArticlesContent = () => {
   const t = useTranslations("pages.admin");
   return (
     <div className="h-full w-full">
-      <header className="flex justify-between gap-24 items-center w-full">
+      <header className="flex gap-24 items-center">
         <Typography variant="h1" className="[&&]:leading-40">
           {t("myArticles.heading")}
         </Typography>
@@ -18,7 +18,7 @@ export const MyArticlesContent = () => {
           <Button>{t("myArticles.newArticle")}</Button>
         </Link>
       </header>
-      <Suspense fallback={<LoadingIndicator />}>
+      <Suspense fallback={<LoadingIndicator height={300} />}>
         <MyArticlesTable />
       </Suspense>
     </div>
