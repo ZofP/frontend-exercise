@@ -8,7 +8,6 @@ import { ProtectedLinks } from "./ProtectedLinks";
 
 const {
   common: { home, about },
-  anonymous: { login },
 } = APP_CONFIG.routes;
 
 export const Navbar = () => {

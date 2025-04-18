@@ -1,18 +1,25 @@
 "use client";
 
+import Link from "next/link";
+
 import { PencilIcon } from "@/components";
+import { APP_CONFIG } from "@/config/app";
+import { buildDynamicPath } from "@/utils";
 
 interface EditArticleButtonProps {
   articleId: string;
 }
 
 export const EditArticleButton = ({ articleId }: EditArticleButtonProps) => {
-  const handleEdit = () => {
-    console.log("edit", articleId);
-  };
   return (
-    <button onClick={handleEdit}>
+    <Link
+      href={{
+        pathname: buildDynamicPath(APP_CONFIG.routes.admin.editArticle, {
+          articleId,
+        }),
+      }}
+    >
       <PencilIcon />
-    </button>
+    </Link>
   );
 };
