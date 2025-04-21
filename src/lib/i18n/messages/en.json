@@ -53,11 +53,16 @@
   },
   "article": {
     "readWholeArticle": "Read whole article",
-    "numberOfComments": "{amount} comments",
-    "unknownAuthor": "Unknown Author"
+    "unknownAuthor": "Unknown Author",
+    "comments": {
+      "author": "Author",
+      "content": "Content",
+      "comments": "Comments ({count})"
+    }
   },
   "errors": {
-    "wrongCredentials": "Nesprávné přihlašovací údaje.",
-    "thisFieldIsRequired": "Toto pole je povinné."
+    "wrongCredentials": "Invalid login credentials.",
+    "thisFieldIsRequired": "This field is required.",
+    "somethingWentWrong": "Something went wrong"
   }
 }

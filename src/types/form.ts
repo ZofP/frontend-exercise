@@ -7,11 +7,13 @@ export type FormFieldName =
   | "password"
   | "title"
   | "perex"
-  | "content";
+  | "content"
+  | "author";
 
 export enum FormInputErrorMessageTypeEnum {
   ThisFieldIsRequired = "errors.thisFieldIsRequired",
   WrongCredentials = "errors.wrongCredentials",
+  SomethingWentWrong = "errors.somethingWentWrong",
 }
 
 export interface TextInputProps

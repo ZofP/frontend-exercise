@@ -8,11 +8,20 @@ import { APP_CONFIG } from "@/config/app";
 import { CreateArticleRequest } from "@/types/article";
 import { authenticatedFetch } from "../helpers";
 
+const {
+  endpoints: {
+    common: { articles },
+  },
+  tags: {
+    articles: { list },
+  },
+} = API_CONFIG;
+
 export const createNewArticle = async (body: CreateArticleRequest) => {
-  await authenticatedFetch(API_CONFIG.endpoints.common.articles, {
+  await authenticatedFetch(articles, {
     method: "POST",
     body,
   });
-  revalidateTag("articles-list");
+  revalidateTag(list);
   redirect(APP_CONFIG.routes.admin.myArticles);
 };
