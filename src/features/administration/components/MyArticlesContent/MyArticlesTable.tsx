@@ -16,7 +16,7 @@ interface ArticlesTableData extends TableRowBase, ArticleDetail {
 
 export const MyArticlesTable = async () => {
   const items = await fetchArticlesWithDetails();
-  const t = await getTranslations("article");
+  const t = await getTranslations();
   console.log({ items });
 
   const tableData: ArticlesTableData[] = items.map((article) => {
@@ -26,30 +26,36 @@ export const MyArticlesTable = async () => {
       ...article,
       id: articleId,
       actions: "actions",
-      author: t("unknownAuthor"),
+      author: t("article.unknownAuthor"),
       commentsCount: comments.length,
       select: "select",
     };
   });
   const columns: TableColumn<ArticlesTableData>[] = [
     {
-      header: "",
+      header: "select",
       accessor: "select",
       align: "center",
       disableSort: true,
       renderBodyCell: () => <Checkbox />,
       renderHeaderCell: () => <Checkbox />,
     },
-    { header: "Article title", accessor: "title" },
-    { header: "Perex", accessor: "perex" },
+    {
+      header: t("pages.admin.myArticles.table.headers.title"),
+      accessor: "title",
+    },
+    {
+      header: t("pages.admin.myArticles.table.headers.perex"),
+      accessor: "perex",
+    },
     { header: "Author", accessor: "author" },
     {
-      header: "# of comments",
+      header: t("pages.admin.myArticles.table.headers.commentsCount"),
       accessor: "commentsCount",
       align: "center",
     },
     {
-      header: "Actions",
+      header: t("pages.admin.myArticles.table.headers.actions"),
       accessor: "actions",
       align: "center",
       renderBodyCell: (_, { articleId }) => (

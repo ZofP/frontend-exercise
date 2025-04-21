@@ -8,6 +8,7 @@ import {
   UseFormReturn,
 } from "react-hook-form";
 
+import { HookFormMarkdownEditor } from "./HookFormMarkdownEditor";
 import { HookFormSubmitButton } from "./HookFormSubmitButton";
 import { HookFormTextInput } from "./HookFormTextInput";
 
@@ -36,5 +37,6 @@ const HookForm = <TFieldValues extends FieldValues = FieldValues>({
 };
 
 HookForm.TextInput = HookFormTextInput;
+HookForm.MarkdownEditor = HookFormMarkdownEditor;
 HookForm.SubmitButton = HookFormSubmitButton;
 export { HookForm };

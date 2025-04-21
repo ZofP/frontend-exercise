@@ -1,3 +1,5 @@
+import { ArticleForm } from "@/features/administration";
+
 export default function CreateArticlePage() {
-  return <div>CreateArticlePage</div>;
+  return <ArticleForm />;
 }

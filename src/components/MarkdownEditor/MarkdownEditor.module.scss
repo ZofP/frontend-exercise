@@ -1,0 +1,11 @@
+.editor {
+  background: var(--color-white);
+  min-height: 400px;
+  pre {
+    color: var(--color-body);
+    font-size: 16px;
+  }
+  textarea {
+    font-size: 16px;
+  }
+}

@@ -11,6 +11,9 @@
     "common": {
       "home": {
         "heading": "Recent Articles"
+      },
+      "about": {
+        "heading": "About"
       }
     },
     "anonymous": {
@@ -23,7 +26,28 @@
     "admin": {
       "myArticles": {
         "heading": "My Articles",
-        "newArticle": "New Article"
+        "newArticle": "New Article",
+        "table": {
+          "headers": {
+            "title": "Article title",
+            "perex": "Perex",
+            "author": "Author",
+            "commentsCount": "# of comments",
+            "actions": "Actions"
+          }
+        }
+      },
+      "newArticle": {
+        "heading": "Create new article",
+        "publish": "Publish",
+        "inputs": {
+          "title": "Article title",
+          "perex": "Perex",
+          "content": "Content"
+        }
+      },
+      "editArticle": {
+        "heading": "Edit article"
       }
     }
   },

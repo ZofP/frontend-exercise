@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
 
 import { login } from "@/actions/auth";
-import { HookForm, Typography } from "@/components";
+import { HookForm, PageHeader } from "@/components";
 import { setAuthenticated, useAppDispatch } from "@/lib/redux";
 import { FormInputErrorMessageTypeEnum } from "@/types";
 import { LoginSchema, loginSchema } from "@/types/auth";
@@ -44,22 +44,24 @@ export const LoginForm = () => {
   };
 
   return (
-    <section className="flex flex-col gap-32">
-      <Typography variant="h1">{t("pages.anonymous.login.title")}</Typography>
-      <HookForm submitHandler={submitHandler} {...methods}>
-        <HookForm.TextInput
-          name="username"
-          label={t("pages.anonymous.login.inputs.username")}
-        />
-        <HookForm.TextInput
-          name="password"
-          type="password"
-          label={t("pages.anonymous.login.inputs.password")}
-        />
-        <HookForm.SubmitButton>
-          {t("pages.anonymous.login.submitButtonText")}
-        </HookForm.SubmitButton>
-      </HookForm>
-    </section>
+    <div className="flex flex-col gap-32">
+      <PageHeader title={t("pages.anonymous.login.title")} />
+      <section>
+        <HookForm submitHandler={submitHandler} {...methods}>
+          <HookForm.TextInput
+            name="username"
+            label={t("pages.anonymous.login.inputs.username")}
+          />
+          <HookForm.TextInput
+            name="password"
+            type="password"
+            label={t("pages.anonymous.login.inputs.password")}
+          />
+          <HookForm.SubmitButton>
+            {t("pages.anonymous.login.submitButtonText")}
+          </HookForm.SubmitButton>
+        </HookForm>
+      </section>
+    </div>
   );
 };

@@ -10,11 +10,6 @@ export const ENDPOINTS_CONFIG = {
     createImage: "/images",
   },
   admin: {
-    refreshToken: "/admin/auth/refresh",
-    tenants: "/admin/tenants",
-    tenantById: "/admin/tenants/:tenantId",
-    articles: "/admin/articles",
-    articleById: "/admin/articles/:articleId",
     commentsForArticle: "/admin/articles/:articleId/comments",
     upvoteComment: "/admin/comments/:commentId/upvote",
     downvoteComment: "/admin/comments/:commentId/downvote",

@@ -1,9 +1,7 @@
 import React from "react";
 
-import { guardContent } from "@/actions/auth";
-import { MyArticlesContent } from "@/features/administration/components/MyArticlesContent";
+import { MyArticlesContent } from "@/features/administration";
 
 export default async function MyArticlesPage() {
-  await guardContent();
   return <MyArticlesContent />;
 }
