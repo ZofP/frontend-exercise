@@ -1,6 +1,5 @@
 "use client";
 
-import { startTransition } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
@@ -10,24 +9,19 @@ import { AvatarPlaceholderIcon, HookForm } from "@/components";
 import { FormInputErrorMessageTypeEnum } from "@/types";
 import { ArticleDetail } from "@/types/article";
 import {
-  Comment,
   createCommentRequestValidationSchema,
   CreateCommentValidationRequest,
 } from "@/types/comment";
-import { generateUniqueId } from "@/utils";
 
 const defaultValues: CreateCommentValidationRequest = {
   author: "",
   content: "",
 };
 
-interface AddArticleCommentFormProps extends Pick<ArticleDetail, "articleId"> {
-  addComment: (action: Comment) => void;
-}
+type AddArticleCommentFormProps = Pick<ArticleDetail, "articleId">;
 
 export const AddArticleCommentForm = ({
   articleId,
-  addComment,
 }: AddArticleCommentFormProps) => {
   const t = useTranslations();
   const methods = useForm<CreateCommentValidationRequest>({
@@ -38,33 +32,25 @@ export const AddArticleCommentForm = ({
     setError,
     formState: { isSubmitting },
     resetField,
+    setValue,
   } = methods;
 
   const submitHandler: SubmitHandler<CreateCommentValidationRequest> = async (
     data
   ) => {
+    // remove the content optimistically
+    resetField("content");
+    // prevent multiple calls to the server at the same time
     if (isSubmitting) {
       return;
     }
-    startTransition(() => {
-      const newComment: Comment = {
-        ...data,
-        commentId: generateUniqueId(),
-        articleId,
-        postedAt: new Date().toISOString(),
-        score: 0,
-      };
-      addComment(newComment);
-    });
-
-    console.log("publish", data);
     try {
       const reqData = { ...data, articleId };
       await createComment(reqData);
-      resetField("content");
-    } catch (error) {
-      console.log({ error });
-
+    } catch {
+      // restore the content if the request fails
+      setValue("content", data.content);
+      // show the error
       setError("content", {
         message: t(FormInputErrorMessageTypeEnum.SomethingWentWrong),
       });

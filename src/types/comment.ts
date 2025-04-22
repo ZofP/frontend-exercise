@@ -35,7 +35,7 @@ export const wsCommentSchema = z.object({
   commentId: z.string(),
   author: z.string(),
   content: z.string(),
-  createdAt: z.string(), // ISO8601, optional: .datetime()
+  createdAt: z.string(),
   score: z.number(),
 });
 export type WSComment = z.infer<typeof wsCommentSchema>;

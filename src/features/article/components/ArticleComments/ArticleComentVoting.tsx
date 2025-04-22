@@ -1,7 +1,5 @@
 "use client";
 
-import { useOptimistic } from "react";
-
 import { Typography } from "@/components";
 import { Comment } from "@/types/comment";
 import { ArticleVoteButton } from "./ArticleVoteButton";
@@ -15,24 +13,15 @@ export const ArticleComentVoting = ({
   score,
   ...props
 }: ArticleComentVotingActionsProps) => {
-  const [optimisticScore, setOptimisticScore] = useOptimistic(
-    score,
-    (state, addition: number) => {
-      return state + addition;
-    }
-  );
-  const displayedScore = String(
-    optimisticScore < 0 ? optimisticScore : `+${optimisticScore}`
-  );
-  const commonProps = { setOptimisticScore, ...props };
+  const displayedScore = String(score < 0 ? score : `+${score}`);
 
   return (
     <div className="flex gap-8 items-center">
       <Typography>{displayedScore}</Typography>
       <VerticalDivider />
-      <ArticleVoteButton direction="up" {...commonProps} />
+      <ArticleVoteButton direction="up" {...props} />
       <VerticalDivider />
-      <ArticleVoteButton direction="down" {...commonProps} />
+      <ArticleVoteButton direction="down" {...props} />
     </div>
   );
 };

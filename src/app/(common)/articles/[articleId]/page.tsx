@@ -1,5 +1,4 @@
 import { Suspense } from "react";
-import { getTranslations } from "next-intl/server";
 
 import { fetchArticleById } from "@/actions/article";
 import { LoadingIndicator, MarkdownContent, PageHeader } from "@/components";
@@ -15,7 +14,6 @@ type ArticleDetailPageProps = GenericPageProps<{ articleId: string }>;
 export default async function ArticleDetailPage({
   params,
 }: ArticleDetailPageProps) {
-  const t = await getTranslations("article");
   const { articleId } = await params;
   const { createdAt, content, title, imageId, comments } =
     await fetchArticleById(articleId);

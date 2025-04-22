@@ -1,8 +1,6 @@
-import { z } from "zod";
-
-const parser = z.string().min(1).parse;
+import { parseRequiredString } from "@/utils";
 
 export const ENV_CONFIG = {
-  apiUrl: parser(process.env.API_URL),
-  apiKey: parser(process.env.API_KEY),
+  apiUrl: parseRequiredString(process.env.API_URL),
+  apiKey: parseRequiredString(process.env.API_KEY),
 } as const;

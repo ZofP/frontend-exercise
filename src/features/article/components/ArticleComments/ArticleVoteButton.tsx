@@ -11,27 +11,18 @@ interface ArticleVoteButtonProps {
   direction: CommentVotingDirection;
   commentId: string;
   articleId: string;
-  setOptimisticScore: (action: number) => void;
-  step?: number;
 }
 
-export const ArticleVoteButton = ({
-  setOptimisticScore,
-  step = 1,
-  ...props
-}: ArticleVoteButtonProps) => {
+export const ArticleVoteButton = (props: ArticleVoteButtonProps) => {
   const [isPending, startTransition] = useTransition();
   const isUpvote = props.direction === "up";
-  const multiplier = isUpvote ? 1 : -1;
-  const handleUpdateVote = async () => {
+  const handleUpdateVote = () => {
     if (isPending) {
       return;
     }
-    startTransition(() => {
-      setOptimisticScore(multiplier * step);
+    startTransition(async () => {
+      await updateCommentVote(props);
     });
-
-    await updateCommentVote(props);
   };
 
   return (

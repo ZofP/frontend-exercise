@@ -1,4 +1,4 @@
 export * from "./ArticleAuthorDate";
 export * from "./ArticleCard";
-export * from "./ArticleComment";
+export * from "./ArticleComments";
 export * from "./ArticleImage";
