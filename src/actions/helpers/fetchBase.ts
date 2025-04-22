@@ -3,10 +3,14 @@
 import { API_CONFIG } from "@/config/api";
 import { ExtendedRequestInit } from "@/types";
 
-const DEFAULT_HEADERS: Record<string, string> = {
+const DEFAULT_HEADERS = {
   "Content-Type": "application/json",
   "X-API-KEY": API_CONFIG.env.apiKey,
-};
+} as const;
+
+const DEFAULT_CACHE_OPTIONS = {
+  cache: "force-cache",
+} as const;
 
 export const fetchBase = async (
   path: string | URL | Request,
@@ -18,18 +22,16 @@ export const fetchBase = async (
     return await fetch(fullUrl, { headers: DEFAULT_HEADERS });
   }
 
-  const { body, ...restInit } = init;
+  const { body, headers, ...restInit } = init;
   const options: RequestInit = {
+    headers: { ...DEFAULT_HEADERS, ...headers },
+    ...DEFAULT_CACHE_OPTIONS,
     ...restInit,
-    headers: { ...restInit.headers, ...DEFAULT_HEADERS },
   };
   if (body) {
     options.body = JSON.stringify(body);
   }
   const res = await fetch(fullUrl, options);
-  if (!res.body) {
-    return;
-  }
 
   console.log({ res });
 

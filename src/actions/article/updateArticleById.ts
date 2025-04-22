@@ -9,18 +9,25 @@ import { CreateArticleRequest } from "@/types/article";
 import { buildDynamicPath } from "@/utils/url";
 import { authenticatedFetch } from "../helpers";
 
+const {
+  endpoints: {
+    common: { articleById },
+  },
+  tags: {
+    articles: { list, byId },
+  },
+} = API_CONFIG;
+
 export const updateArticleById = async (
   articleId: string,
   body: CreateArticleRequest
 ) => {
-  await authenticatedFetch(
-    buildDynamicPath(API_CONFIG.endpoints.common.articleById, { articleId }),
-    {
-      method: "PATCH",
-      body,
-    }
-  );
-  revalidateTag(`article-${articleId}`);
+  await authenticatedFetch(buildDynamicPath(articleById, { articleId }), {
+    method: "PATCH",
+    body,
+  });
+  revalidateTag(list);
+  revalidateTag(byId(articleId));
 
   redirect(APP_CONFIG.routes.admin.myArticles);
 };

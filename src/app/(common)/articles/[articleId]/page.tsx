@@ -2,7 +2,11 @@ import { Suspense } from "react";
 
 import { fetchArticleById } from "@/actions/article";
 import { LoadingIndicator, MarkdownContent, PageHeader } from "@/components";
-import { ArticleAuthorDate, ArticleImage } from "@/features/article";
+import {
+  ArticleAuthorDate,
+  ArticleCommentsSection,
+  ArticleImage,
+} from "@/features/article";
 import { GenericPageProps } from "@/types";
 
 type ArticleDetailPageProps = GenericPageProps<{ articleId: string }>;
@@ -11,9 +15,8 @@ export default async function ArticleDetailPage({
   params,
 }: ArticleDetailPageProps) {
   const { articleId } = await params;
-  const { createdAt, content, title, imageId } = await fetchArticleById(
-    articleId
-  );
+  const { createdAt, content, title, imageId, comments } =
+    await fetchArticleById(articleId);
 
   return (
     <Suspense fallback={<LoadingIndicator />}>
@@ -24,6 +27,9 @@ export default async function ArticleDetailPage({
         <section className="flex flex-col gap-24">
           <ArticleImage imageId={imageId} width={760} height={504} />
           <MarkdownContent content={content ?? ""} />
+        </section>
+        <section className="flex flex-col gap-24">
+          <ArticleCommentsSection {...{ articleId, comments }} />
         </section>
       </div>
     </Suspense>

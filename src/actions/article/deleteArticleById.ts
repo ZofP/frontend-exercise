@@ -6,6 +6,15 @@ import { API_CONFIG } from "@/config/api";
 import { buildDynamicPath } from "@/utils";
 import { authenticatedFetch } from "../helpers";
 
+const {
+  endpoints: {
+    common: { articleById },
+  },
+  tags: {
+    articles: { list, byId },
+  },
+} = API_CONFIG;
+
 export const deleteArticleById = async (articleId: string) => {
   await authenticatedFetch(
     buildDynamicPath(API_CONFIG.endpoints.common.articleById, { articleId }),
@@ -13,6 +22,6 @@ export const deleteArticleById = async (articleId: string) => {
       method: "DELETE",
     }
   );
-  revalidateTag(`article-${articleId}`);
-  revalidateTag("articles-list");
+  revalidateTag(byId(articleId));
+  revalidateTag(list);
 };
