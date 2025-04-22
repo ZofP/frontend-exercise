@@ -57,7 +57,8 @@
     "comments": {
       "author": "Author",
       "content": "Content",
-      "comments": "Comments ({count})"
+      "comments": "Comments ({count})",
+      "submitButtonText": "Submit"
     }
   },
   "errors": {

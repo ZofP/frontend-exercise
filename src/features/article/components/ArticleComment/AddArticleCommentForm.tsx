@@ -78,11 +78,16 @@ export const AddArticleCommentForm = ({
         <div className="flex flex-col gap-8 w-full">
           <HookForm.TextInput
             name="author"
-            placeholder="Author"
+            placeholder={t("article.comments.author")}
             className="w-full"
           />
-          <HookForm.TextInput name="content" placeholder="Content" />
-          <HookForm.SubmitButton>Submit</HookForm.SubmitButton>
+          <HookForm.TextInput
+            name="content"
+            placeholder={t("article.comments.content")}
+          />
+          <HookForm.SubmitButton>
+            {t("article.comments.submitButtonText")}
+          </HookForm.SubmitButton>
         </div>
       </HookForm>
     </div>

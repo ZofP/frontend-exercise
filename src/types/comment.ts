@@ -30,3 +30,18 @@ export type CreateCommentRequest = CreateCommentValidationRequest & {
 };
 
 export type CommentVotingDirection = "up" | "down";
+
+export const wsCommentSchema = z.object({
+  commentId: z.string(),
+  author: z.string(),
+  content: z.string(),
+  createdAt: z.string(), // ISO8601, optional: .datetime()
+  score: z.number(),
+});
+export type WSComment = z.infer<typeof wsCommentSchema>;
+
+export const webSocketEventSchema = z.object({
+  changeType: z.enum(["commentCreated", "commentUpVoted", "commentDownVoted"]),
+  comment: wsCommentSchema,
+});
+export type WebSocketEvent = z.infer<typeof webSocketEventSchema>;
