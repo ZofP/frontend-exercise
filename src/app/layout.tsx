@@ -12,6 +12,9 @@ import { ReduxProvider } from "@/lib/redux";
 export const metadata: Metadata = {
   title: "Cats Articles | Frontend Exercise",
   description: "Frontend Exercise in Next.js",
+  icons: {
+    icon: "/images/favicon.ico",
+  },
 };
 
 export default async function RootLayout({ children }: PropsWithChildren) {
