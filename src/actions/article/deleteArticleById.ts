@@ -16,12 +16,9 @@ const {
 } = API_CONFIG;
 
 export const deleteArticleById = async (articleId: string) => {
-  await authenticatedFetch(
-    buildDynamicPath(API_CONFIG.endpoints.common.articleById, { articleId }),
-    {
-      method: "DELETE",
-    }
-  );
+  await authenticatedFetch(buildDynamicPath(articleById, { articleId }), {
+    method: "DELETE",
+  });
   revalidateTag(byId(articleId));
   revalidateTag(list);
 };
