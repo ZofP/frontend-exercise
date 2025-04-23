@@ -63,7 +63,7 @@ However, for this project it is okay as it serves only for testing purposes.
 ## 🐞 ‼️ Known issues ‼️
 
 - The app features concerning article comments and their upvoting/downvoting are currently **NOT** working.  
-  This is because on every API request to the corresponding endpoints, an error is thrown (status 500). Once the API is fixed, these features will work again.
+  This is because on every API request to the corresponding endpoints, an error is thrown (status 500). Once the API is fixed, these features will work again. For the time being, one comment is mocked in the app so that its layout is visible.
 
 ## 🧪 Tech stack considerations
 
