@@ -4,23 +4,29 @@ import { APP_CONFIG } from "@/config/app";
 
 export const useWebSocket = (onMessage: (msg: MessageEvent) => void) => {
   const wsRef = useRef<WebSocket | null>(null);
-  const reconnectRef = useRef(true);
   const reconnectingTimeout = useRef<NodeJS.Timeout | null>(null);
+  const isFinallyClosed = useRef(false);
 
   const clearReconnectingTimeout = () => {
     if (!reconnectingTimeout.current) {
       return;
     }
     clearTimeout(reconnectingTimeout.current);
+    reconnectingTimeout.current = null;
   };
 
   useEffect(() => {
     const connect = () => {
       wsRef.current = new WebSocket(APP_CONFIG.env.apiWsUrl);
       wsRef.current.onmessage = onMessage;
+      wsRef.current.onopen = () => {
+        isFinallyClosed.current = false;
+      };
 
       wsRef.current.onclose = () => {
-        if (!reconnectRef.current) {
+        console.log("WS closed");
+        if (isFinallyClosed.current) {
+          console.log("is final");
           return;
         }
         clearReconnectingTimeout();
@@ -37,8 +43,12 @@ export const useWebSocket = (onMessage: (msg: MessageEvent) => void) => {
     connect();
 
     return () => {
+      console.log("unmounted");
+      isFinallyClosed.current = true;
       wsRef.current?.close();
       clearReconnectingTimeout();
+      wsRef.current = null;
+      console.log("unmounted", wsRef.current);
     };
   }, [onMessage]);
 };
