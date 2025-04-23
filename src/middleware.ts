@@ -19,13 +19,10 @@ import { APP_CONFIG } from "./config/app";
 export function middleware(request: NextRequest) {
   const accessToken = request.cookies.get(CookieKey.AccessToken)?.value;
   if (!accessToken) {
-    console.log("redirecting");
-
     return NextResponse.redirect(
       new URL(APP_CONFIG.routes.anonymous.login, request.url)
     );
   }
-  console.log("falling through");
 
   return NextResponse.next();
 }
