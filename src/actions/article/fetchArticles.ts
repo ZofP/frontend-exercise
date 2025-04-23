@@ -10,7 +10,5 @@ export const fetchArticles = async (
 ): Promise<ArticleList> => {
   const res = await fetchBase(...getFetchArticlesArgs(args));
 
-  console.log({ articles: res });
-
   return articleListSchema.parse(res);
 };

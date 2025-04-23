@@ -33,7 +33,6 @@ export const ArticleForm = ({
     defaultValues,
   });
   const submitHandler: SubmitHandler<CreateArticleRequest> = async (data) => {
-    console.log("publish", data);
     if (articleId) {
       await updateArticleById(articleId, data);
       return;

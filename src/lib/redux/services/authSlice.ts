@@ -12,7 +12,6 @@ export const authSlice = createSlice({
   reducers: {
     setAuthenticated: (state) => {
       state.isAuthenticated = true;
-      console.log("setAuthenticated");
     },
 
     setAnonymous: () => {

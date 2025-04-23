@@ -17,8 +17,6 @@ export const metadata: Metadata = {
 export default async function RootLayout({ children }: PropsWithChildren) {
   const token = await getAccessToken();
 
-  console.log({ token });
-
   return (
     <html lang="en">
       <body className="antialiased">

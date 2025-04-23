@@ -36,11 +36,8 @@ export const axiosBase = async (
       ...restConfig,
     });
 
-    console.log({ response });
-
     return response.data;
   } catch (error) {
-    console.error("Axios error:", error);
     throw error;
   }
 };
