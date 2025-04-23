@@ -18,7 +18,6 @@ export const ProtectedLinks = () => {
   const dispatch = useAppDispatch();
   const t = useTranslations("navbar");
 
-  console.log({ isAuthenticated });
   if (!isAuthenticated) {
     return (
       <TypographyLink href={login} className="text-primary">

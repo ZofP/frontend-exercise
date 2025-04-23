@@ -17,7 +17,6 @@ interface ArticlesTableData extends TableRowBase, ArticleDetail {
 export const MyArticlesTable = async () => {
   const items = await fetchArticlesWithDetails();
   const t = await getTranslations();
-  console.log({ items });
 
   const tableData: ArticlesTableData[] = items.map((article) => {
     const { comments, articleId } = article;

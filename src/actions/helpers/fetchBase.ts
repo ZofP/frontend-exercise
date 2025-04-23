@@ -23,13 +23,10 @@ export const fetchBase = async (
   }
 
   const { body, headers, ...restInit } = init;
-  console.log({ headers });
   let options: RequestInit = {
     headers: { ...DEFAULT_HEADERS, ...headers },
     ...restInit,
   };
-
-  console.log({ options });
 
   if (body) {
     options.body = JSON.stringify(body);
@@ -37,7 +34,6 @@ export const fetchBase = async (
   if (options.method === "GET") {
     options = { ...options, ...DEFAULT_CACHE_OPTIONS };
   }
-  console.log({ fullUrl });
 
   const res = await fetch(fullUrl, options);
   if (!res.ok) {
@@ -46,7 +42,6 @@ export const fetchBase = async (
   if (!res.body) {
     return;
   }
-  console.log({ res });
 
   return await res.json();
 };

@@ -24,13 +24,10 @@ export const useWebSocket = (onMessage: (msg: MessageEvent) => void) => {
       };
 
       wsRef.current.onclose = () => {
-        console.log("WS closed");
         if (isFinallyClosed.current) {
-          console.log("is final");
           return;
         }
         clearReconnectingTimeout();
-        console.log("WS closed, reconnecting");
 
         reconnectingTimeout.current = setTimeout(connect, 3000);
       };
@@ -43,12 +40,10 @@ export const useWebSocket = (onMessage: (msg: MessageEvent) => void) => {
     connect();
 
     return () => {
-      console.log("unmounted");
       isFinallyClosed.current = true;
       wsRef.current?.close();
       clearReconnectingTimeout();
       wsRef.current = null;
-      console.log("unmounted", wsRef.current);
     };
   }, [onMessage]);
 };
