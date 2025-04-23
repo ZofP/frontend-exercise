@@ -20,6 +20,13 @@ export const authenticatedFetch = async (
     redirect(login, RedirectType.replace);
   }
 
+  console.log({
+    authenticatedHeaders: {
+      ...init?.headers,
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
   return await fetchBase(path, {
     ...init,
     headers: { ...init?.headers, Authorization: `Bearer ${token}` },

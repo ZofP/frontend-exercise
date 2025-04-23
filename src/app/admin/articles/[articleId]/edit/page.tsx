@@ -1,5 +1,5 @@
 import { fetchArticleById } from "@/actions/article";
-import { ArticleForm } from "@/features/administration";
+import { ArticleForm } from "@/features/article";
 import { GenericPageProps } from "@/types";
 
 export default async function EditArticlePage({

@@ -1,5 +1,7 @@
 "use client";
 
+import { useTransition } from "react";
+
 import { deleteArticleById } from "@/actions/article";
 import { TrashIcon } from "@/components";
 
@@ -10,9 +12,15 @@ interface DeleteArticleButtonProps {
 export const DeleteArticleButton = ({
   articleId,
 }: DeleteArticleButtonProps) => {
+  const [isPending, startTransition] = useTransition();
+
   const handleDelete = () => {
-    console.log("delete", articleId);
-    deleteArticleById(articleId);
+    if (isPending) {
+      return;
+    }
+    startTransition(async () => {
+      await deleteArticleById(articleId);
+    });
   };
   return (
     <button onClick={handleDelete}>
